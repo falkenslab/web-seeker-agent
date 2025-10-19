@@ -1,0 +1,26 @@
+[project]
+name = "web-seeker-agent"
+version = "0.1.0"
+description = "Agente de IA implementado con LangGraph y modelos de OpenAI que busca información en la web a través de la API de Tavily"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-tavily>=0.2.11",
+    "langchain-openai>=0.3.35",
+    "langgraph>=0.6.8",
+    "python-dotenv>=1.1.1",
+    "ipython>=9.6.0",
+]
+
+[project.urls]
+Home = "https://github.com/falkenslab/web-seeker-agent"
+Documentation = "https://github.com/falkenslab/web-seeker-agent/blob/main/README.md"
+Source = "https://github.com/falkenslab/web-seeker-agent"
+Issues = "https://github.com/falkenslab/web-seeker-agent/issues"
+
+[project.scripts]
+seeker = "agent.__main__:main"
+
+[build-system]
+requires      = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
