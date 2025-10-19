@@ -7,6 +7,11 @@ from IPython.display import Image
 from .agent import Agent
 
 def main():
+    """Punto de entrada de la línea de comandos para ejecutar el agente.
+
+    Crea la herramienta de búsqueda, configura el modelo LLM, construye el
+    agente y procesa una consulta recibida por argumento o un saludo por defecto.
+    """
 
     tool = TavilySearch(max_results=4)
 
