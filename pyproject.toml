@@ -1,5 +1,5 @@
 [project]
-name = "web-seeker-agent"
+name = "wiseguy"
 version = "0.1.0"
 description = "Agente de IA implementado con LangGraph y modelos de OpenAI que busca información en la web a través de la API de Tavily"
 readme = "README.md"
@@ -13,10 +13,10 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://github.com/falkenslab/web-seeker-agent"
-Documentation = "https://github.com/falkenslab/web-seeker-agent/blob/main/README.md"
-Source = "https://github.com/falkenslab/web-seeker-agent"
-Issues = "https://github.com/falkenslab/web-seeker-agent/issues"
+Home = "https://github.com/falkenslab/wiseguy"
+Documentation = "https://github.com/falkenslab/wiseguy/blob/main/README.md"
+Source = "https://github.com/falkenslab/wiseguy"
+Issues = "https://github.com/falkenslab/wiseguy/issues"
 
 [project.scripts]
 wiseguy = "wiseguy.__main__:main"
