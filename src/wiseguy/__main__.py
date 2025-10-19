@@ -3,6 +3,7 @@ import sys
 from langchain_tavily import TavilySearch
 from langchain_openai import ChatOpenAI
 from IPython.display import Image
+from langgraph.checkpoint.memory import InMemorySaver
 
 from .agent import Agent
 
@@ -22,11 +23,13 @@ def main():
         Si necesitas buscar alguna información antes de hacer una pregunta de seguimiento, ¡se te permite hacerlo
     """.strip()
 
-    model = ChatOpenAI(model="gpt-5")
-    agent = Agent(model, [tool], system=prompt)
+    model = ChatOpenAI(model="gpt-4o")
+    agent = Agent(model, [tool], system=prompt, verbose=False)
 
-    result = agent.ask(sys.argv[1] if len(sys.argv) > 1 else "¡Hola! ¿Cómo estás?")
-    result.pretty_print()
+    #result = agent.ask(sys.argv[1] if len(sys.argv) > 1 else "¡Hola! ¿Cómo estás?")
+    #result.pretty_print()
+
+    agent.ask(sys.argv[1] if len(sys.argv) > 1 else "¡Hola! ¿Cómo estás?", sync=False)
 
 if __name__ == "__main__":
     main()

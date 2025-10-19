@@ -24,7 +24,7 @@ Agente de investigación en la web construido con LangGraph, usando modelos de O
   - `OPENAI_API_KEY` para OpenAI.
   - `TAVILY_API_KEY` para Tavily.
 
-> Nota: En el código, el modelo por defecto es `gpt-5`. Asegúrate de tener acceso al modelo configurado o cámbialo por otro disponible en tu cuenta (por ejemplo, `gpt-4o` o similar) en `src/agent/__main__.py`.
+> Nota: En el código, el modelo por defecto es `gpt-4o`. Asegúrate de tener acceso al modelo configurado.
 
 ## Instalación
 
@@ -54,11 +54,11 @@ OPENAI_API_KEY=tu_clave_de_openai
 TAVILY_API_KEY=tu_clave_de_tavily
 ```
 
-Al importar el paquete (`agent/__init__.py`), se cargan automáticamente las variables del `.env`.
+Al importar el paquete (`wiseguy/__init__.py`), se cargan automáticamente las variables del `.env`.
 
 ## Uso
 
-El paquete expone un comando de consola `seeker` y también puede ejecutarse como módulo.
+El paquete expone un comando de consola `wiseguy` y también puede ejecutarse como módulo.
 
 ### Desde la línea de comandos
 
@@ -66,13 +66,13 @@ Con `pip` o `uv` activado (entorno con dependencias instaladas):
 
 ```bash
 # Pasando una consulta directamente
-seeker "¿Qué impactos recientes tiene la IA en salud?"
+wiseguy "¿Qué impactos recientes tiene la IA en salud?"
 
 # O ejecutando el paquete como módulo
-python -m agent "¿Qué es LangGraph y en qué casos conviene?"
+python -m wiseguy "¿Qué es LangGraph y en qué casos conviene?"
 
 # Sin argumentos: usa un saludo por defecto
-python -m agent
+python -m wiseguy
 ```
 
 Durante la ejecución, verás cuándo el agente decide "Ejecutar acción" (llamar a Tavily) y los mensajes de herramienta intermedios. El último mensaje mostrado es la respuesta final del asistente.
@@ -83,7 +83,7 @@ Durante la ejecución, verás cuándo el agente decide "Ejecutar acción" (llama
 
 ```
 src/
-└── agent/
+└── wiseguy/
     ├── __init__.py        # Carga variables de entorno (.env)
     ├── __main__.py        # Punto de entrada del CLI / módulo
     └── agent.py           # Lógica del agente y grafo de LangGraph
@@ -97,10 +97,10 @@ src/
 
 ### Cambiar el modelo
 
-El modelo se define en `src/agent/__main__.py`:
+El modelo se define en `src/wiseguy/__main__.py`:
 
 ```python
-model = ChatOpenAI(model="gpt-5")
+model = ChatOpenAI(model="gpt-4o")
 ```
 
 Cámbialo por uno disponible en tu cuenta de OpenAI si es necesario.
@@ -109,13 +109,13 @@ Cámbialo por uno disponible en tu cuenta de OpenAI si es necesario.
 
 ```bash
 pip install -e .
-seeker "Prueba rápida del agente"
+wiseguy "Prueba rápida del agente"
 ```
 
 Si usas `uv`:
 
 ```bash
-uv run seeker "Prueba rápida del agente"
+uv run wiseguy "Prueba rápida del agente"
 ```
 
 ### Notas para contribuidores
