@@ -1,6 +1,6 @@
-# Web Seeker Agent
+# Wise Guy
 
-Agente de investigación en la web construido con LangGraph, usando modelos de OpenAI y la herramienta de búsqueda de Tavily. El agente decide cuándo llamar al buscador y puede encadenar varias búsquedas para ofrecer una respuesta final sintetizada.
+Agente inteligente de investigación en la web construido con LangGraph, usando modelos de OpenAI y la herramienta de búsqueda de Tavily. El agente decide cuándo llamar al buscador y puede encadenar varias búsquedas para ofrecer una respuesta final sintetizada.
 
 ## ¿Qué hace?
 
