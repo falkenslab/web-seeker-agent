@@ -6,6 +6,7 @@ from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, Too
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import InMemorySaver
 
+from .utils import bold, PURPLE
 
 class AgentState(TypedDict):
     """Estado del agente usado por el grafo.
@@ -146,7 +147,7 @@ class Agent:
             results.append(message)
         return {"messages": results}
 
-    def ask(self, question: str, sync: bool = True) -> AnyMessage|None:
+    def ask(self, question: str, sync: bool = False) -> AnyMessage|None:
         """Formula una pregunta al agente y devuelve la última respuesta.
 
         Parámetros:
@@ -178,6 +179,7 @@ class Agent:
         Parámetros:
             question: texto de la consulta del usuario.
         """
+        print(f"\n{bold('Wiseguy:', PURPLE)} ", end="")
         async for event in self.graph.astream_events(input={"messages": messages}, config=self.config):
             kind = event["event"]
             if kind == "on_chat_model_stream":
