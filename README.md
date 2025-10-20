@@ -66,12 +66,9 @@ Con `pip` o `uv` activado (entorno con dependencias instaladas):
 
 ```bash
 # Pasando una consulta directamente
-wiseguy "¿Qué impactos recientes tiene la IA en salud?"
+wiseguy
 
 # O ejecutando el paquete como módulo
-python -m wiseguy "¿Qué es LangGraph y en qué casos conviene?"
-
-# Sin argumentos: usa un saludo por defecto
 python -m wiseguy
 ```
 
@@ -109,13 +106,13 @@ Cámbialo por uno disponible en tu cuenta de OpenAI si es necesario.
 
 ```bash
 pip install -e .
-wiseguy "Prueba rápida del agente"
+wiseguy
 ```
 
 Si usas `uv`:
 
 ```bash
-uv run wiseguy "Prueba rápida del agente"
+uv run wiseguy
 ```
 
 ### Notas para contribuidores
