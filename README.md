@@ -47,7 +47,9 @@ uv sync
 
 ## Configuración
 
-Crea un archivo `.env` en la raíz del proyecto con tus claves:
+### Fichero `.env`
+
+Puedes crear un archivo `.env` en la raíz del proyecto con tus claves:
 
 ```env
 OPENAI_API_KEY=tu_clave_de_openai
@@ -55,6 +57,24 @@ TAVILY_API_KEY=tu_clave_de_tavily
 ```
 
 Al importar el paquete (`wiseguy/__init__.py`), se cargan automáticamente las variables del `.env`.
+
+### Variables de entorno
+
+Como alternativa puedes definir estas claves en variables de entorno del sistema:
+
+En Linux/macOS:
+
+```bash
+export OPENAI_API_KEY=tu_clave_de_openai
+export TAVILY_API_KEY=tu_clave_de_tavily
+```
+
+En Windows (PowerShell):
+
+```powershell
+$env:OPENAI_API_KEY="tu_clave_de_openai"
+$env:TAVILY_API_KEY="tu_clave_de_tavily"
+``` 
 
 ## Uso
 
