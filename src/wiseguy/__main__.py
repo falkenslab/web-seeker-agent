@@ -3,7 +3,7 @@ import sys
 from langchain_tavily import TavilySearch
 from langchain_openai import ChatOpenAI
 
-from .utils import bold, BLUE
+from .utils import PURPLE, bold, BLUE
 from .agent import Agent
 
 def main():
@@ -21,11 +21,16 @@ def main():
     model = ChatOpenAI(model="gpt-4o")
     agent = Agent(model, [tool], system=prompt, verbose=False)
 
-    #result = agent.ask(sys.argv[1] if len(sys.argv) > 1 else "¡Hola! ¿Cómo estás?")
-    #result.pretty_print()
+    # Imprime el grafo si se pasa el argumento --print-graph en formato Mermaid
+    if len(sys.argv) > 1:
+        arg = sys.argv[1].strip()
+        if arg == "--print-graph":
+            agent.print_graph()
+            return
 
+    print(f"\n{bold("🤖 Wiseguy:", PURPLE)} ¡Hola! Soy Wiseguy, tu asistente de investigación. ¿En qué puedo ayudarte hoy?\n")
     while True:
-        user_input = input(f"{bold('Tú:', BLUE)} ")
+        user_input = input(f"{bold('🧑‍🦲 Tú:', BLUE)} ")
         if user_input.strip().lower() == "":
             break
         agent.ask(user_input)

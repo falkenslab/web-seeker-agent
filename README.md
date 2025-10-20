@@ -86,11 +86,33 @@ src/
     └── agent.py           # Lógica del agente y grafo de LangGraph
 ```
 
-### Flujo interno
+### Flujo interno del agente
 
-- Grafo con dos nodos: `llm` (invoca el modelo) y `action` (ejecuta herramientas).
-- Arista condicional: si el modelo devuelve tool-calls, se pasa a `action`; si no, termina.
-- Tras ejecutar herramientas, se vuelve a `llm` para razonar con los resultados.
+- Grafo con 3 nodos: `llm` (invoca el modelo), `action` (ejecuta herramientas) e `init` (estado inicial).
+- Arista condicional: si el modelo devuelve tool-calls, se pasa a `action`; si no, termina, y devuelve el resultado al usuario.
+- Tras ejecutar las tools, vuelve a `llm` para razonar con los resultados.
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+        __start__([<p>__start__</p>]):::first
+        init(init)
+        llm(llm)
+        action(action)
+        __end__([<p>__end__</p>]):::last
+        __start__ --> init;
+        action --> llm;
+        init --> llm;
+        llm -. &nbsp;False&nbsp; .-> __end__;
+        llm -. &nbsp;True&nbsp; .-> action;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc
+```
 
 ### Cambiar el modelo
 

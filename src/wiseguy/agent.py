@@ -179,7 +179,7 @@ class Agent:
         Parámetros:
             question: texto de la consulta del usuario.
         """
-        print(f"\n{bold('Wiseguy:', PURPLE)} ", end="")
+        print(f"\n{bold('🤖 Wiseguy:', PURPLE)} ", end="")
         async for event in self.graph.astream_events(input={"messages": messages}, config=self.config):
             kind = event["event"]
             if kind == "on_chat_model_stream":
@@ -187,3 +187,7 @@ class Agent:
                 # Si el contenido está vacío significa que el modelo está pidiendo una herramienta, por eso sólo imprimimos contenido no vacío
                 if content:
                     print(content, end="")
+
+    def print_graph(self) -> None:
+        """Imprime una representación del grafo del agente."""
+        print(self.graph.get_graph().draw_mermaid())
